@@ -14,4 +14,9 @@ public class HexagonGem extends Gem{
     {
         super(value);
     }
+
+    @Override
+    public int blast(Score sc) {
+        return (sc.getScoreAchieved()+5);
+    }
 }

@@ -14,5 +14,10 @@ public class TriangleGem extends Gem{
     {
         super(value);
     }
+
+    @Override
+    public int blast(Score sc) {
+        return (sc.getScoreAchieved()+2);
+    }
     
 }

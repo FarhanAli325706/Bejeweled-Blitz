@@ -14,4 +14,9 @@ public class DiamondGem extends Gem{
     {
         super(value);
     }
+
+    @Override
+    public int blast(Score sc) {
+        return (sc.getScoreAchieved()+4);
+    }
 }

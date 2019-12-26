@@ -14,5 +14,12 @@ public class CircleGem extends Gem{
     {
         super(value);
     }
+
+    @Override
+    public int blast(Score sc) {
+        return (sc.getScoreAchieved()+1);
+    }
+
+  
     
 }

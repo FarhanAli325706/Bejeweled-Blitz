@@ -67,6 +67,11 @@ public class GamePlayFrame extends javax.swing.JFrame {
         tiles = new JButton[8][8];
         gemBoard = new Board();
         listOfGems = gemBoard.createBoard();
+        while(this.gemBoard.findOccurences())
+        {
+            this.gemBoard.updateBoard();
+        }
+        this.listOfGems=gemBoard.getListOfGems();
         for (int x = 0; x < 8; x++) {
 
             for (int y = 0; y < 8; y++) {
@@ -215,7 +220,18 @@ public class GamePlayFrame extends javax.swing.JFrame {
                 Timer timer = new Timer(delay, e -> {
                     //The following code will be executed once the delay is reached
                     if (this.gemBoard.findOccurences()) {
-                    ;
+                    this.listOfGems=this.gemBoard.getListOfGems();
+                    for(int k=0;k<64;k++)
+                    {
+                        if(this.listOfGems.get(k).getValue()==0)
+                        {
+                            int x_coordinate=k/8;
+                            int y_coordinate=k%8;
+                            this.tiles[x_coordinate][y_coordinate].setIcon(null);
+                            this.tiles[x_coordinate][y_coordinate].setBackground(Color.yellow);
+                            LoginFrame.playSound("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\sounds\\gernade.wav");
+                        }
+                    }
                 } else {
                     final Icon temp2 = this.tiles[(this.coordinates[0][0])][(this.coordinates[0][1])].getIcon();
                     this.tiles[(this.coordinates[0][0])][(this.coordinates[0][1])].setIcon(null);
@@ -224,6 +240,7 @@ public class GamePlayFrame extends javax.swing.JFrame {
                     
                     this.tiles[(this.coordinates[1][0])][(this.coordinates[1][1])].setIcon(temp2);
                     this.gemBoard.swapGem(coordinates);
+                    LoginFrame.playSound("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\sounds\\no.wav");
                 }
                 });
                 timer.setRepeats(false);//make sure the timer only runs once

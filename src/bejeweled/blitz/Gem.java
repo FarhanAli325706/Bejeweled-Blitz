@@ -23,4 +23,5 @@ abstract public class Gem {
     {
         return this.gemValue;
     }
+    abstract public int blast(Score sc);
 }
