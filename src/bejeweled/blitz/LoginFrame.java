@@ -68,7 +68,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        playSound("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\sounds\\sound1.wav");
+        LoginFrame.playSound("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\sounds\\option.wav");
         MenuFrame menu=new MenuFrame();
         menu.setVisible(true);
         dispose();
@@ -109,7 +109,7 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
     }
-    public void playSound(String soundName) {
+    public static void playSound(String soundName) {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
             Clip clip = AudioSystem.getClip();
