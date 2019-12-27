@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.List;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.Timer;
 
 /**
  *
@@ -61,6 +62,46 @@ public class Board {
             }
         }
         return false;
+    }
+    public void dropGemHorizontally(int[][] blast_coordinates) {
+        int looper = blast_coordinates[0][0];
+        int x_coordinate = blast_coordinates[0][0];
+        int y_coordinate = blast_coordinates[0][1];
+        while (looper > 0) {
+            final int x = x_coordinate;
+            final int y = y_coordinate;
+            this.listOfGem.set(8 * x + y, this.listOfGem.get(8 * x + y - 8));
+            this.listOfGem.set(8 * x + y + 1, this.listOfGem.get(8 * x + y + 1 - 8));
+            this.listOfGem.set(8 * x + y + 2, this.listOfGem.get(8 * x + y + 2 - 8));
+
+            --looper;
+            --x_coordinate;
+
+        }
+        final int min = 1;
+        final int max = 5;
+        Random rand = new Random();
+        for (int k = 0; k < 3; k++) {
+
+            int value = rand.nextInt((max - min) + 1) + min;
+            if (value == 1) {
+                this.listOfGem.set(y_coordinate+k, new CircleGem(value));
+            }
+            if (value == 2) {
+                this.listOfGem.set(y_coordinate+k, new TriangleGem(value));
+            }
+            if (value == 3) {
+                this.listOfGem.set(y_coordinate+k, new SquareGem(value));
+            }
+            if (value == 4) {
+                this.listOfGem.set(y_coordinate+k, new DiamondGem(value));
+            }
+            if (value == 5) {
+                this.listOfGem.set(y_coordinate+k, new HexagonGem(value));
+            }
+
+        }
+
     }
     public boolean findHorizontal()
     {
