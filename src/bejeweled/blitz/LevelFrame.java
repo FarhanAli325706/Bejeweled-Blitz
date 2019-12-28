@@ -5,24 +5,18 @@
  */
 package bejeweled.blitz;
 
-import java.io.File;
-import javax.swing.JFrame;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.AudioSystem;
-
 /**
  *
  * @author Farhan
  */
-public class LoginFrame extends javax.swing.JFrame {
+public class LevelFrame extends javax.swing.JFrame {
     
-
+   
     /**
-     * Creates new form Login
+     * Creates new form LevelFrame
      */
-    public LoginFrame() {
-        GamePlayFrame.levelType=1;
+    public LevelFrame() {
+        
         initComponents();
     }
 
@@ -41,33 +35,38 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1295, 698));
+        setMinimumSize(new java.awt.Dimension(1307, 700));
         getContentPane().setLayout(null);
 
         jButton1.setBackground(new java.awt.Color(255, 215, 0));
-        jButton1.setText("EXIT GAME");
+        jButton1.setText("Intermidiate");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(610, 390, 120, 50);
+        jButton1.setBounds(610, 300, 100, 40);
 
         jButton2.setBackground(new java.awt.Color(255, 215, 0));
-        jButton2.setText("USER");
+        jButton2.setText("Beginner");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2);
-        jButton2.setBounds(610, 250, 120, 50);
+        jButton2.setBounds(610, 240, 100, 40);
 
         jButton3.setBackground(new java.awt.Color(255, 215, 0));
-        jButton3.setText("GUEST");
+        jButton3.setText("Expert");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(610, 320, 120, 50);
+        jButton3.setBounds(610, 360, 100, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\background images\\menu.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
@@ -77,16 +76,29 @@ public class LoginFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        GamePlayFrame.levelType=1;
+        LoginFrame.playSound("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\sounds\\option.wav");
+        MenuFrame menu = new MenuFrame();
+        menu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        LoginFrame.playSound("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\sounds\\option.wav");        
-        this.dispose();
+        GamePlayFrame.levelType=2;
+        LoginFrame.playSound("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\sounds\\option.wav");
+        MenuFrame menu = new MenuFrame();
+        menu.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        GamePlayFrame.levelType=3;
         LoginFrame.playSound("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\sounds\\option.wav");
-        MenuFrame menu=new MenuFrame();
+        MenuFrame menu = new MenuFrame();
         menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -108,34 +120,22 @@ public class LoginFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LevelFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LevelFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LevelFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LevelFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginFrame().setVisible(true);
+                new LevelFrame().setVisible(true);
             }
         });
-    }
-    public static void playSound(String soundName) {
-        try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (Exception ex) {
-            System.out.println("Error with playing sound.");
-            ex.printStackTrace();
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

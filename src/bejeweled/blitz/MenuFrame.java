@@ -15,8 +15,10 @@ public class MenuFrame extends javax.swing.JFrame {
      * Creates new form MenuFrame
      */
     public MenuFrame() {
+        
         initComponents();
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,7 +37,7 @@ public class MenuFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1307, 700));
+        setMinimumSize(new java.awt.Dimension(1295, 698));
         getContentPane().setLayout(null);
 
         jButton1.setBackground(new java.awt.Color(255, 215, 0));
@@ -50,11 +52,21 @@ public class MenuFrame extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(255, 215, 0));
         jButton2.setText("Exit Game");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2);
         jButton2.setBounds(610, 440, 100, 40);
 
         jButton3.setBackground(new java.awt.Color(255, 215, 0));
         jButton3.setText("Select Level");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3);
         jButton3.setBounds(610, 260, 100, 40);
 
@@ -68,7 +80,7 @@ public class MenuFrame extends javax.swing.JFrame {
         getContentPane().add(jButton5);
         jButton5.setBounds(610, 380, 100, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\background images\\Computer.Desktop.Wallpapers.Collection1_001 (76).jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\background images\\menu.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1290, 660);
@@ -83,6 +95,20 @@ public class MenuFrame extends javax.swing.JFrame {
         game.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        LoginFrame.playSound("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\sounds\\option.wav");
+        LevelFrame level=new LevelFrame();
+        level.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        LoginFrame.playSound("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\sounds\\option.wav");
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

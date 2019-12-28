@@ -28,6 +28,14 @@ public class Board {
     {
         this.gameScore=new Score();
     }
+    public void setGameScore(int gameScore)
+    {
+        this.gameScore.setScoreAchieved(gameScore);
+    }
+    public int getGameScore()
+    {
+        return this.gameScore.getScoreAchieved();
+    }
     public void swapGem(int[][] coordinates)
     {
         int temp=this.listOfGem.get(coordinates[0][0]*8+coordinates[0][1]).getValue();
@@ -53,7 +61,7 @@ public class Board {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 8; j++) {
                 if (this.listOfGem.get(8 * i + j).getValue() == this.listOfGem.get(8 * i + j + 8).getValue() && this.listOfGem.get(8 * i + j).getValue() == this.listOfGem.get(8 * i + j + 16).getValue()) {
-                    this.listOfGem.get(8 * i + j).blast(gameScore);
+                    this.gameScore.setScoreAchieved(this.listOfGem.get(8 * i + j).blast(gameScore));
                     this.listOfGem.get(8 * i + j).setValue(0);
                     this.listOfGem.get(8 * i + j + 8).setValue(0);
                     this.listOfGem.get(8 * i + j + 16).setValue(0);
@@ -103,6 +111,44 @@ public class Board {
         }
 
     }
+    public void dropGemVertically(int[][] blast_coordinates) {
+        int looper = blast_coordinates[2][0];
+        int x_coordinate = blast_coordinates[2][0];
+        int y_coordinate = blast_coordinates[2][1];
+        while (looper > 2) {
+            final int x = x_coordinate;
+            final int y = y_coordinate;
+            this.listOfGem.set(8 * x + y, this.listOfGem.get(8 * x + y - 24));
+
+            --looper;
+            --x_coordinate;
+
+        }
+        final int min = 1;
+        final int max = 5;
+        Random rand = new Random();
+        for (int k = 0; k < 3; k++) {
+
+            int value = rand.nextInt((max - min) + 1) + min;
+            if (value == 1) {
+                this.listOfGem.set(8*k+y_coordinate, new CircleGem(value));
+            }
+            if (value == 2) {
+                this.listOfGem.set(8*k+y_coordinate, new TriangleGem(value));
+            }
+            if (value == 3) {
+                this.listOfGem.set(8*k+y_coordinate, new SquareGem(value));
+            }
+            if (value == 4) {
+                this.listOfGem.set(8*k+y_coordinate, new DiamondGem(value));
+            }
+            if (value == 5) {
+                this.listOfGem.set(8*k+y_coordinate, new HexagonGem(value));
+            }
+
+        }
+
+    }
     public boolean findHorizontal()
     {
         for(int i=0;i<8;i++)
@@ -111,7 +157,7 @@ public class Board {
             {
                 if(this.listOfGem.get(8*i+j).getValue()==this.listOfGem.get(8*i+j+1).getValue() && this.listOfGem.get(8*i+j).getValue()==this.listOfGem.get(8*i+j+2).getValue())
                 {
-                    this.listOfGem.get(8*i+j).blast(gameScore);
+                    this.gameScore.setScoreAchieved(this.listOfGem.get(8*i+j).blast(gameScore));
                     this.listOfGem.get(8*i+j).setValue(0);
                     this.listOfGem.get(8*i+j+1).setValue(0);
                     this.listOfGem.get(8*i+j+2).setValue(0);
