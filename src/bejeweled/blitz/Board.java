@@ -46,9 +46,79 @@ public class Board {
     {
         return this.listOfGem;
     }
+    public boolean findSpecialGemOccurences()
+    {
+        if (this.findSpecialGemHorizontal()) {
+            return true;
+        } else if (this.findSpecialGemVertical()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public void dropSpecialGemCase(int[][] blast_coordinates) {
+        int x_coordinate = blast_coordinates[0][0];
+        int y_coordinate = blast_coordinates[0][1];
+   
+        final int min = 1;
+        final int max = 5;
+        Random rand = new Random();
+        for (int k = 0; k < 8; k++) {
+
+            int value = rand.nextInt((max - min) + 1) + min;
+            if (value == 1) {
+                this.listOfGem.set(8*k+y_coordinate, new CircleGem(value));
+            }
+            if (value == 2) {
+                this.listOfGem.set(8*k+y_coordinate, new TriangleGem(value));
+            }
+            if (value == 3) {
+                this.listOfGem.set(8*k+y_coordinate, new SquareGem(value));
+            }
+            if (value == 4) {
+                this.listOfGem.set(8*k+y_coordinate, new DiamondGem(value));
+            }
+            if (value == 5) {
+                this.listOfGem.set(8*k+y_coordinate, new HexagonGem(value));
+            }
+
+        }
+
+    }
+    public boolean findSpecialGemHorizontal()
+    {
+        for(int i=0;i<8;i++)
+        {
+            for(int j=0;j<5;j++)
+            {
+                if(this.listOfGem.get(8*i+j).getValue()==this.listOfGem.get(8*i+j+1).getValue() && this.listOfGem.get(8*i+j).getValue()==this.listOfGem.get(8*i+j+2).getValue() && this.listOfGem.get(8*i+j).getValue()==this.listOfGem.get(8*i+j+3).getValue())
+                {
+                    //first make it special gem
+                    this.listOfGem.set(8 * i + j, new LinerGem(6));
+                    this.gameScore.setScoreAchieved(this.listOfGem.get(8*i+j).blast(gameScore));
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public boolean findSpecialGemVertical()
+    {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (this.listOfGem.get(8 * i + j).getValue() == this.listOfGem.get(8 * i + j + 8).getValue() && this.listOfGem.get(8 * i + j).getValue() == this.listOfGem.get(8 * i + j + 16).getValue() && this.listOfGem.get(8 * i + j).getValue() == this.listOfGem.get(8 * i + j + 24).getValue()) {
+                    //first make it special gem
+                    this.listOfGem.set(8 * i + j, new LinerGem(6));
+                    this.gameScore.setScoreAchieved(this.listOfGem.get(8 * i + j).blast(gameScore));
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
     public boolean findOccurences()
     {
-        int value=-1;
         if (this.findHorizontal()) {
             return true;
         } else if (this.findVertical()) {
