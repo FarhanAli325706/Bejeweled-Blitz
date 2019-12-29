@@ -48,6 +48,7 @@ public class Board {
     }
     public boolean findOccurences()
     {
+        int value=-1;
         if (this.findHorizontal()) {
             return true;
         } else if (this.findVertical()) {

@@ -15,9 +15,13 @@ import java.awt.List;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -128,6 +132,18 @@ public class GamePlayFrame extends javax.swing.JFrame {
         add(timer, BorderLayout.WEST);
         this.showTimer();
         this.showScore();
+        GamePlayFrame.playSound("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\sounds\\gameplay.wav");
+    }
+    public static void playSound(String soundName) {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch (Exception ex) {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
     }
     public void loadLevel() {
         if (GamePlayFrame.levelType == 1) {
@@ -149,12 +165,17 @@ public class GamePlayFrame extends javax.swing.JFrame {
         this.uiTimer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
                 myTime.setSec((myTime.getSec() - 1));
                 timer.setSecLabel(myTime.getSec());
-
+                LoginFrame.playSound("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\sounds\\clock.wav");
                 if (myTime.getSec() == 0) {
                     if (myTime.getMin() == 0) {
                         uiTimer.stop();
+                        uiScore.stop();
+                        GameOverFrame gameOver=new GameOverFrame();
+                        gameOver.setVisible(true);
+                        dispose();
                     } else {
                         myTime.setMin((myTime.getMin() - 1));
                         timer.setMinLabel(myTime.getMin());
@@ -174,6 +195,13 @@ public class GamePlayFrame extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 timer.setCurrenntScoreLabel(gemBoard.getGameScore());
+                if (gemBoard.getGameScore() > 100) {
+                    uiScore.stop();
+                    uiTimer.stop();
+                    GameOverFrame gameOver=new GameOverFrame();
+                    gameOver.setVisible(true);
+                    dispose();
+                }
             }
         });
         this.uiScore.start();
@@ -320,7 +348,7 @@ public class GamePlayFrame extends javax.swing.JFrame {
             });
             timer1.setRepeats(false);//make sure the timer only runs once
             timer1.start();
- 
+            
             --looper;
             --x_coordinate;
 
