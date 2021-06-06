@@ -20,3 +20,5 @@ Installation:
 You just need to run the code in netbeans IDE and just build the code and it will run the
 code successfully.
 
+Following are the screenshots of the game.![Screenshot (1713)](https://user-images.githubusercontent.com/54321426/120931398-c134de80-c70a-11eb-9de2-2580529f7bb1.png)
+
