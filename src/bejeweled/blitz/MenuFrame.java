@@ -45,9 +45,8 @@ public class MenuFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,7 +61,7 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(610, 200, 100, 40);
+        jButton1.setBounds(610, 220, 100, 40);
 
         jButton2.setBackground(new java.awt.Color(255, 215, 0));
         jButton2.setText("Exit Game");
@@ -72,7 +71,7 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(610, 440, 100, 40);
+        jButton2.setBounds(610, 340, 100, 40);
 
         jButton3.setBackground(new java.awt.Color(255, 215, 0));
         jButton3.setText("Select Level");
@@ -82,17 +81,7 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(610, 260, 100, 40);
-
-        jButton4.setBackground(new java.awt.Color(255, 215, 0));
-        jButton4.setText("Store");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(610, 320, 100, 40);
-
-        jButton5.setBackground(new java.awt.Color(255, 215, 0));
-        jButton5.setText("Settings");
-        getContentPane().add(jButton5);
-        jButton5.setBounds(610, 380, 100, 40);
+        jButton3.setBounds(610, 280, 100, 40);
 
         jButton6.setBackground(new java.awt.Color(255, 215, 0));
         jButton6.setIcon(new javax.swing.ImageIcon("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\back_button.png")); // NOI18N
@@ -103,6 +92,12 @@ public class MenuFrame extends javax.swing.JFrame {
         });
         getContentPane().add(jButton6);
         jButton6.setBounds(40, 30, 60, 40);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 150, 0));
+        jLabel2.setText("Main Menu");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(520, 100, 280, 58);
 
         jLabel1.setIcon(new javax.swing.ImageIcon("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\background images\\menu.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
@@ -181,9 +176,8 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

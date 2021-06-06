@@ -36,6 +36,7 @@ public class Board {
     {
         return this.gameScore.getScoreAchieved();
     }
+    // new module
     public void swapGem(int[][] coordinates)
     {
         int temp=this.listOfGem.get(coordinates[0][0]*8+coordinates[0][1]).getValue();
@@ -117,7 +118,7 @@ public class Board {
         return false;
     }
     
-    public boolean findOccurences()
+    public boolean findOccurences()     // module
     {
         if (this.findHorizontal()) {
             return true;
@@ -264,6 +265,7 @@ public class Board {
             }
         }
     }
+    // new module
     public ArrayList<Gem> createBoard()
     {
         this.listOfGem=new ArrayList<Gem>();

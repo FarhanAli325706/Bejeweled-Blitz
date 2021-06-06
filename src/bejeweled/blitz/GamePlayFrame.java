@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.List;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -39,7 +40,7 @@ import javax.swing.border.LineBorder;
  */
 public class GamePlayFrame extends javax.swing.JFrame {
     
-    TimerJPanel timer= new TimerJPanel();
+    TimerPanel timer= new TimerPanel();
     private Time myTime=new Time();
     private Timer uiTimer;
     private Timer uiScore;
@@ -50,6 +51,7 @@ public class GamePlayFrame extends javax.swing.JFrame {
     private JButton[][] tiles;
     ArrayList<Gem> listOfGems;
     public static int levelType;
+//    private final ImageIcon hexagon = new ImageIcon(this.getClass().getResource("/hexagon.png").getImage());
     private Icon hexagon = new ImageIcon("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\hexagon.PNG");
     private Icon diamond = new ImageIcon("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\diamond.PNG");
     private Icon circle = new ImageIcon("D:\\FAST\\Semester 5\\Object Oriented Analysis and Design\\Project\\Bonus Part\\circle.PNG");
@@ -146,6 +148,7 @@ public class GamePlayFrame extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
+    // new module
     public void loadLevel() {
         if (GamePlayFrame.levelType == 1) {
             this.myTime.setMin(2);
@@ -158,6 +161,7 @@ public class GamePlayFrame extends javax.swing.JFrame {
             this.myTime.setSec(60);
         }
     }
+    // new module
     public void showTimer() {
         
         this.loadLevel();
@@ -188,13 +192,14 @@ public class GamePlayFrame extends javax.swing.JFrame {
         });
         this.uiTimer.start();
     }
-    
+    // new module
     public void showScore() {
         this.gemBoard.setGameScore(0);
         //timer.setCurrenntScoreLabel(this.gemBoard.getGameScore());
         this.uiScore = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println(gemBoard.getGameScore());
                 timer.setCurrenntScoreLabel(gemBoard.getGameScore());
                 if (gemBoard.getGameScore() > 100) {
                     uiScore.stop();
@@ -279,6 +284,7 @@ public class GamePlayFrame extends javax.swing.JFrame {
     //coordinates[0][1] contains source j
     //coordinates[1][0] contains destination i
     //coordinates[1][1] contains destination j
+  
     private boolean isValidMove() {
         if ((this.coordinates[0][0] - 1) >= 0) {
             if ((this.coordinates[0][0] - 1) == this.coordinates[1][0] && this.coordinates[0][1] == this.coordinates[1][1]) {
@@ -302,6 +308,7 @@ public class GamePlayFrame extends javax.swing.JFrame {
         }
         return false;
     }
+    // new module
     public void createGUI() {
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
@@ -554,7 +561,7 @@ public class GamePlayFrame extends javax.swing.JFrame {
         //timer2.setRepeats(false);//make sure the timer only runs once
         // timer2.start();
     }
-
+    // new module
     public void blastUIGem() {
         this.listOfGems = this.gemBoard.getListOfGems();
         int index = 0;
@@ -646,7 +653,7 @@ public class GamePlayFrame extends javax.swing.JFrame {
             this.counter = 0;
         }
     }
-
+    // new module
     private class ButtonHandler implements ActionListener {
 
         @Override
